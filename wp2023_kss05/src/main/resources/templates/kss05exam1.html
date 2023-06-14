@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+         <h1>강신성(KSS05) 문제1 : 결과(구현완료)</h1><br><br>
+         <h2>CRUD 뷰페이지 + 컨트롤러 구현 검증</h2><br>
+         <a href="/kss05exam1_c">강신성(KSS05) 문제1 - Create 결과 확인</a><br><br>
+         <a href="/kss05exam1_r">강신성(KSS05) 문제1 - Read 결과 확인</a><br><br>
+         <a href="/kss05exam1_u">강신성(KSS05) 문제1 - Update 결과 확인</a><br><br>
+         <a href="/kss05exam1_d">강신성(KSS05) 문제1 - Delete 결과 확인</a><br><br>
+         <br><br><br><br><br><br><br><br> 
+         <a href="/kss05home">홈으로 돌아가기</a>
+         <br><br><br>
+      <th:block>
+   <th:block>
+</body>
+</html>

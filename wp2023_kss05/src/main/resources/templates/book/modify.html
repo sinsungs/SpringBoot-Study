@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<!-- <th:block th:replace="~{/layout/basic::setContent(~{this::content})}">
+   <th:block th:fragment="content">
+    -->
+    
+	<th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+          
+      <h1 class="mt-4">book 데이터 수정/삭제</h1>
+      
+      <form th:action="@{/book/modify}" method="post">
+<!--       <form th:action="@{/book/register}" th:method="post"> -->
+      
+      <input type="hidden" name="page" th:value="${requestDTO.page}">
+      <input type="hidden" name="type" th:value="${requestDTO.type}">
+      <input type="hidden" name="keyword" th:value="${requestDTO.keyword}">      
+      
+      <div class="form-group">
+      		<label>Bid</label>
+      		<input type="text" class="form-control" name="bid" th:value="${dto.bid}" readonly>
+      </div>
+      
+      <div class="form-group">
+         <label>bcno</label>
+         <input type="text" class="form-control" name="bcno" th:value="${dto.bcno}" readonly>
+      </div>
+      
+      <div class="form-group">
+      		<label>bname</label>
+      		<input type="text" class="form-control" name="bname" th:value="${dto.bname}" >
+      </div>
+      
+      <div class="form-group">
+      		<label>bauthor</label>
+      		<input type="text" class="form-control" name="bauthor" th:value="${dto.bauthor}" >
+      </div>
+      
+      <div class="form-group">
+      		<label>bpublisher</label>
+      		<input type="text" class="form-control" name="bpublisher" th:value="${dto.bpublisher}" >
+      </div>
+      
+      <div class="form-group">
+         <label>bpulicationyear</label>      
+         <input type="text" class="form-control" th:value="${#temporals.format(dto.bpulicationyear, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+      </div>
+      
+<!--       <div class="form-group">
+         <label>ModDate</label>
+         <input type="text" class="form-control" th:value="${#temporals.format(dto.modDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+      </div>
+      
+      
+ -->
+      </form>
+      
+       <button type="submit" class="btn btn-primary modifyBtn">Modify</button>
+       
+       <button type="button" class="btn btn-info listBtn">List</button>
+
+       <button type="button" class="btn btn-danger removeBtn">Remove</button> 
+     
+			<!-- REMOVE 페이지를 따로 만들어서 FORM 구현하기 -->
+
+      <script th:inline="javascript">
+         
+         var actionForm = $("form");
+         
+         $(".removeBtn").click(function(){
+            
+            if(!confirm("삭제하시겠습니까?")){
+               return;
+            }
+            
+            actionForm
+               .attr("action", "/book/remove")
+               .attr("method","post");
+            
+            actionForm.submit();
+            
+         });
+         
+         $(".modifyBtn").click(function(){
+            
+            if(!confirm("수정하시겠습니까?")){
+               return;
+            }
+            
+            actionForm
+               .attr("action", "/book/modify")
+               .attr("method", "post")
+               .submit();
+            
+         });
+         
+         $(".listBtn").click(function(){
+            
+            var pageInfo = $("input[name='page']");
+            var type = $("input[name='type']");
+            var keyword = $("input[name='keyword']");
+            
+            actionForm.empty();
+            actionForm.append(pageInfo);
+            actionForm.append(type);
+            actionForm.append(keyword);
+                         
+            actionForm
+               .attr("action", "/book/list")
+               .attr("method", "get");
+            
+            console.log(actionForm.html());
+            actionForm.submit();
+            
+         });
+         
+      </script>
+
+   </th:block>
+</th:block>

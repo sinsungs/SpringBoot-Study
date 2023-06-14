@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+         <h1>강신성(KSS05) 2023 웹프2 중간고사</h1><br>
+         <h2>실기시험 수행 결과</h2><br><br>
+         <a href="/kss05exam1">강신성(KSS05) 문제1 결과 보기(O)</a><br><br>
+         <a href="/kss05exam2">강신성(KSS05) 문제2 결과 보기(O)</a><br><br>
+         <a href="/kss05exam3">강신성(KSS05) 문제3 결과 보기(O)</a><br><br>
+         <a href="/kss05exam4">강신성(KSS05) 문제4 결과 보기(O)</a><br><br>
+         <a href="#">강신성(KSS05) 문제5 결과 보기(O)</a><br><br>
+         <h3>. . .</h3><br><br>
+      <th:block>
+   <th:block>
+</body>
+</html>

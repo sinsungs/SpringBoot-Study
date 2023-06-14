@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+         <h1>강신성(KSS05) 문제5 : 결과(구현완료)</h1><br><br>
+         <h2>문제 1번을 이용한 스프링 시큐리티 구현</h2><br>
+         <a href="/guest/kss05guest">강신성(KSS05) GUEST권한 소유자 전용 페이지</a><br><br>
+         <a href="/member">강신성(KSS05) MEMBER권한 소유자 전용 페이지</a><br><br>
+         <a href="/topmem">강신성(KSS05) TOPMEM권한 소유자 전용 페이지</a><br><br>
+         <a href="/manager">강신성(KSS05) MANAGER권한 소유자 전용 페이지</a><br><br>
+         <a href="/admin">강신성(KSS05) ADMIN권한 소유자 전용 페이지</a><br><br>
+         <br><br><br><br><br><br><br><br> 
+         	<a href="/kss05logout">로그아웃은 여기</a>
+<!--          <a href="/kss05home">홈으로 돌아가기</a> -->
+         <br><br><br>
+      <th:block>
+   <th:block>
+</body>
+</html>

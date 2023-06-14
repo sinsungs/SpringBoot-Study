@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+   <th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+         <h1>Book 카테고리 데이터 입력</h1><br><br>
+         
+         <form th:action="@{/category/register}" th:method="post">
+         	<div>
+         		<label>Name</label>
+         		<input type="text" name="cname" placeholder="Enter name">
+         	</div>
+         	<br>
+         	<div>
+         		<label>LOC</label>
+         		<input type="text" name="cloc" placeholder="Enter loc">         	
+         	</div>
+         	<br>
+        	 	<button type="submit">Submit</button>
+         </form>
+		 
+         <br><br><br>
+         <a href="/kss05home">홈으로 돌아가기</a>
+         <br><br><br>
+      <th:block>
+   <th:block>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+
+<style>
+  .pagination {
+    display: flex;
+    list-style-type: none;
+  }
+  .pagination li {
+    margin-right: 10px;
+  }
+</style>
+
+<!-- 	<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}"> -->
+<!-- 		<th:block th:fragment="content"> -->
+		
+	<th:block th:replace="~{layout/layout1 :: setContent(~{this::content})}">
+      <th:block th:fragment="content">
+      
+			<h1 class="mt-4">강신성(KSS05) 문제2 : (READ 구현완료)
+			</h1>
+			
+      		<br>
+			<h1 class="mt-4">Book 카테고리 리스트 페이지</h1>
+		
+			<table border class="table table-striped">
+				<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Name</th>
+					<th scope="col">LOC</th>
+
+				</tr>
+				</thead>
+				<tbody>
+					<tr th:each="dto : ${result}">
+						<th scope="row">
+ 						<a th:href="@{/category/read(cno = ${dto.cno})}">
+                     		[[${dto.cno}]]
+                  		</a>
+                  		                 		
+						</th>
+						<td>[[${dto.cname}]]</td>
+						<td>[[${dto.cloc}]]</td>
+					</tr>
+				</tbody>
+			</table>
+			
+<ul class="pagination">
+  
+  <li th:if="${startPage > 1}">
+  <a th:href="@{/category/list(page=${startPage})}" tabindex="-1">Previous</a>
+</li>
+  
+
+  <li th:each="page : ${#numbers.sequence(startPage, endPage)}" th:class="${nowPage == page ? 'active' : ''}">
+    <a th:href="@{/category/list(page=${page})}" th:text="${page}"></a>
+  </li>
+
+  <li th:if="${endPage < result.totalPages}">
+    <a th:href="@{/category/list(page=${endPage+1})}">Next</a>
+  </li>
+</ul>
+
+<!-- 		<ul class="pagination">
+			<li th:if="${result.prev}"><a
+				th:href="@{/book/list(page=${result.start-1})}" tabindex="-1">Previous</a>
+			</li>
+
+			<li th:each="page:${result.pageList}"><a
+				th:href="@{/book/list(page=${page})}">[[${page}]]</a></li>
+
+			<li th:if="${result.next}"><a
+				th:href="@{/book/list(page=${result.end+1})}">Next</a></li>
+		</ul>
+ -->
+
+		<!--   		      <ul class="pagination h-100 justify-content-center align-items-center">
+		         <li class="page-item " th:if="${result.prev}">
+		            <a class="page-link" th:href="@{/book/list(page=${result.start-1},
+		               type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword} )}" tabindex="-1">Previous</a>
+		         </li> 
+		         
+		         <li th:class=" 'page-item ' + ${result.page == page ? 'active':''} " th:each="page: ${result.pageList}">
+		            <a class="page-link" th:href="@{/book/list(page=${page},
+		               type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword} )}">[[${page}]]</a>
+		         </li>
+		         
+ 		         <li class="page-item " th:if="${result.next}">
+		            <a class="page-link" th:href="@{/book/list(page=${result.end + 1},
+		               type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword} )}">Next</a>
+		         </li>
+		      </ul>  
+		       -->
+<!-- <ul class="pagination">
+  <li th:if="${result.prev}">
+    <a th:href="@{/category/list(page=${result.start-1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}" tabindex="-1">Previous</a>
+  </li>
+
+  <li th:each="page:${result.pageList}">
+    <a th:href="@{/category/list(page=${page}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">[[${page}]]</a>
+  </li>
+
+  <li th:if="${result.next}">
+    <a th:href="@{/category/list(page=${result.end+1}, type=${pageRequestDTO.type}, keyword=${pageRequestDTO.keyword})}">Next</a>
+  </li>
+</ul>
+		  -->      
+		<br>
+		<a href="/kss05exam2">문제2 화면으로 돌아가기</a>
+<!-- 		<a href="/kss05home">홈으로 돌아가기</a> -->
+		      
+  		<script th:inline="javascript" type="text/javascript">
+		
+/*          var msg = [[${msg}]];
+         
+         console.log(msg);
+         
+         if(msg) {
+            $(".modal").modal();
+         } */
+         
+         var searchForm = $("#searchForm");
+         $('.btn-search').click(function(e) {
+            searchForm.submit();
+         });
+         
+         $('.btn-clear').click(function(e) {
+            searchForm.empty().submit();
+         });
+      </script>  
+
+					
+		</th:block>
+	</th:block>
+
+			
+			
+<!-- 			<div class="modal" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Modal Title</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p>Modal body test goes here.</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save Changes</button>
+						</div>
+					</div>
+				</div>
+			</div>	 -->
+			
+      
